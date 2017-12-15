@@ -11,6 +11,8 @@ import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
 
+    private LoginService loginService = new LoginService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("WEB-INF/Views/login.jsp").forward(req, resp);
@@ -18,7 +20,16 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("name", req.getParameter("name"));
-        req.getRequestDispatcher("/WEB-INF/Views/welcome.jsp").forward(req, resp);
+        String name = req.getParameter("name");
+        String password = req.getParameter("password");
+
+        if (loginService.checkPassword(name, password)) {
+            req.setAttribute("name", req.getParameter("name"));
+            req.getRequestDispatcher("/WEB-INF/Views/welcome.jsp").forward(req, resp);
+        } else {
+            req.setAttribute("errorMessage", "Login nicht erfolgreich");
+            req.getRequestDispatcher("/WEB-INF/Views/login.jsp").forward(req, resp);
+        }
+
     }
 }
