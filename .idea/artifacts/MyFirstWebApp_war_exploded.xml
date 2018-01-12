@@ -2,12 +2,16 @@
   <artifact type="exploded-war" name="MyFirstWebApp:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/MyFirstWebApp_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="MyFirstWebApp/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="MyFirstWebApp" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="jstl-1.2" />
+        </element>
       </element>
+      <element id="javaee-facet-resources" facet="MyFirstWebApp/web/Web" />
+      <element id="javaee-facet-resources" facet="MyFirstWebApp/javaeeApplication/javaEEApplication" />
     </root>
   </artifact>
 </component>

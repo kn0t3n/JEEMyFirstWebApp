@@ -1,7 +1,5 @@
 package com.sabel.login;
 
-import com.sabel.todo.ToDoService;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +12,6 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     private LoginService loginService = new LoginService();
-    private ToDoService toDoService = new ToDoService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,9 +24,8 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         if (loginService.checkPassword(name, password)) {
-            req.setAttribute("name", req.getParameter("name"));
-            req.setAttribute("todos", toDoService.retrieveToDos());
-            req.getRequestDispatcher("/WEB-INF/Views/welcome.jsp").forward(req, resp);
+            req.getSession().setAttribute("name", req.getParameter("name"));
+            resp.sendRedirect("/todo.do");
 
         } else {
             req.setAttribute("errorMessage", "Login nicht erfolgreich");
