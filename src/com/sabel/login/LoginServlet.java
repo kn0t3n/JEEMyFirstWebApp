@@ -15,7 +15,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("WEB-INF/Views/login.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/Views/login.jsp").forward(req, resp);
     }
 
     @Override
@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         if (loginService.checkPassword(name, password)) {
-            req.getSession().setAttribute("name", req.getParameter("name"));
+            req.getSession().setAttribute("name", name);
             resp.sendRedirect("/todo.do");
 
         } else {

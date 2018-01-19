@@ -20,4 +20,8 @@ public class ToDoService {
     public List<ToDo> retrieveToDos() {
         return toDos;
     }
+
+    public void add(ToDo toDo) {
+        toDos.add(toDo);
+    }
 }

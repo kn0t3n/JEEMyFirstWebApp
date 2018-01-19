@@ -14,13 +14,24 @@
 <body>
 <p>Hallo ${name}! Herzlich Willkomen</p>
 <p>Deine Todos sind:
+<%--<ol>--%>
+    <%--<c:forEach begin="1" end="10" var="i">--%>
+        <%--<li>--%>
+                <%--${i}--%>
+        <%--</li>--%>
+    <%--</c:forEach>--%>
+<%--</ol>--%>
 <ol>
-    <c:forEach var="todo" items="todos">
+
+    <c:forEach var="todo" items="${todos}">
         <li>
-                ${todos.name}
+                ${todo.name}
         </li>
     </c:forEach>
 </ol>
 </p>
+<form method="get" action="/addTodo.do">
+    <input type="submit" name="addTodo" value="Neues Todo hinzufügen">
+</form>
 </body>
 </html>
