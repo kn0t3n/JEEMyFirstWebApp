@@ -1,4 +1,4 @@
-package com.sabel.addTodo;
+package com.sabel.todo;
 
 import com.sabel.todo.ToDo;
 import com.sabel.todo.ToDoService;

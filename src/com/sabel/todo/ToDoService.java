@@ -35,8 +35,10 @@ public class ToDoService {
         while (iterator.hasNext()){
             ToDo toDo = iterator.next();
             if(toDo.getName().equals(name)){
-                iterator.remove();
+                iterator.remove();          // Iterator benutzen zum loeschen, da Fori schleife evtl über Grenze hinaus iteriert
             }
         }
     }
+
+
 }

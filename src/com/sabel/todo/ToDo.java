@@ -31,7 +31,6 @@ public class ToDo {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(name);
     }
 

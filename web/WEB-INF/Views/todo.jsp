@@ -25,7 +25,7 @@
 
     <c:forEach var="todo" items="${todos}">
         <li>
-                ${todo.name}
+                ${todo.name} &nbsp; &nbsp; &nbsp; <a href="/deleteTodo.do?name=${todo.name}">Löschen</a>
         </li>
     </c:forEach>
 </ol>
