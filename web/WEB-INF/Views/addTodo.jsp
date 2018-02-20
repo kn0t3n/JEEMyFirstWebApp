@@ -6,15 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>AddTodo</title>
-</head>
-<body>
-<form method="post" action="/addTodo.do">
-    <input type="text" name="todo"/>
-    <input type="submit" name="addTodo" value="Hinzufügen">
-</form>
+<%@include file="../common/header.jspf" %>
+<%@include file="../common/navigation.jspf" %>
+<div class="container">
+    <form method="post" action="/addTodo.do">
+        <input type="text" name="todo"/>
+        <input type="submit" name="addTodo" value="Hinzufügen">
+    </form>
+</div>
 
-</body>
-</html>
+<%@include file="../common/footer.jspf" %>

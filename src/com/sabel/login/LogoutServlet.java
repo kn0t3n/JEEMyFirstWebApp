@@ -1,4 +1,4 @@
-package com.sabel.todo;
+package com.sabel.login;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,15 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/deleteTodo.do")
-public class deleteTodoServlet extends HttpServlet{
-
-    private ToDoService toDoService = new ToDoService();
+@WebServlet(urlPatterns = "/logout.do")
+public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String todoname =req.getParameter("name");
-        toDoService.loesche(todoname);
-        resp.sendRedirect("/todo.do");
+        req.getSession().invalidate();
+        req.getRequestDispatcher("/WEB-INF/Views/login.jsp").forward(req, resp);
     }
 }
