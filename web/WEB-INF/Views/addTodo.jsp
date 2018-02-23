@@ -11,7 +11,7 @@
 <div class="container">
     <form method="post" action="/addTodo.do">
         <input type="text" name="todo"/>
-        <input type="submit" name="addTodo" value="Hinzufügen">
+        <input type="submit" name="addTodo" value="Hinzufügen" class="btn btn-success">
     </form>
 </div>
 

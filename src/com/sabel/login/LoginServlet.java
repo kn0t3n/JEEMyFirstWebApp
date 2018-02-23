@@ -1,5 +1,6 @@
 package com.sabel.login;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,8 @@ import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
 
-    private LoginService loginService = new LoginService();
+    @Inject
+    private LoginService loginService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

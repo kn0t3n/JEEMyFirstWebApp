@@ -1,44 +1,28 @@
 package com.sabel.todo;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
-public class ToDoService {
+@ApplicationScoped
+public class ToDoService implements Serializable {
 
-    private static List<ToDo> toDos = new ArrayList<>();
-
-    static {
-        toDos.add(new ToDo("Java EE lernen"));
-        toDos.add(new ToDo("BA lernen"));
-        toDos.add(new ToDo("Tanzen lernen"));
-    }
-
-    public ToDoService() {
-
-    }
+    @Inject
+    private ToDoStore toDoStore;
 
     public List<ToDo> retrieveToDos() {
-        return toDos;
+        return toDoStore.getToDos();
     }
 
     public void add(ToDo toDo) {
-        toDos.add(toDo);
+        toDoStore.store(toDo);
     }
 
-    public void delete(ToDo todo){
-        toDos.remove(todo);
+    public void delete(ToDo todo) {
+        toDoStore.delete(todo);
     }
 
-    public void loesche(String name){
-        Iterator<ToDo> iterator = toDos.iterator();
-        while (iterator.hasNext()){
-            ToDo toDo = iterator.next();
-            if(toDo.getName().equals(name)){
-                iterator.remove();          // Iterator benutzen zum loeschen, da Fori schleife evtl über Grenze hinaus iteriert
-            }
-        }
-    }
 
 
 }
